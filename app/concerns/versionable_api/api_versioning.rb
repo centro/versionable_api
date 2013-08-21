@@ -1,4 +1,4 @@
-module Concerns::VersionableApi::ApiVersioning
+module VersionableApi::ApiVersioning
   extend ActiveSupport::Concern
 
   # Public: The default version, classes including ApiVersioning should specify
