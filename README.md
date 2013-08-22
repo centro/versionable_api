@@ -80,7 +80,7 @@ the `Api::V2::People#show_v2` method will handle the request.
 ```
 GET /api/people/1234.json {HTTP_ACCEPT: text/json;version=1}
 ```
-the `Api::V2::People#show_v1` method will handle the request.
+the `Api::V1::People#show_v1` method will handle the request.
 
 
 **However, if a request comes in that looks like this:**
