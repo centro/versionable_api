@@ -97,7 +97,7 @@ the request will get handled by the `Api::V1::People#index_v1` action.  Even tho
     gem 'versionable_api', git: 'git@github.com:/centro/versionable_api.git'
     ```
 2. Create API controllers that are not versioned: `Api::PeopleController` should be in `app/controllers/api/people_controller.rb`
-3. Include the `VersionableApi::Concerns::ApiVersioning` module in your controller
+3. Include the `VersionableApi::ApiVersioning` module in your controller
 4. Add version identifiers to your action method names.  Instead of `def index; ... end;` you do `def index_v1; ... end;`.  You can put these in named modules to keep things tidy if you want, or just put them all in the base controller.
 5. Set up routes like there's no versioning:
     
