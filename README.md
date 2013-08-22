@@ -44,7 +44,7 @@ would cause it to match paths like: `/API/version-10/something` instead.  See do
 ```
 class Api::PeopleController < ::ApplicationController
   respond_to :json
-  include VersionableApi::Concerns::ApiVersioning
+  include VersionableApi::ApiVersioning
   include Api::V1::People
   include Api::V2::People
 end
