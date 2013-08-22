@@ -35,7 +35,7 @@ config.middleware.use "VersionableApi::ApiVersionInterceptor"
 
 By default, it will look for requests to paths that look like `/api/v#/something` and transform them into `/api/something` with `*/*;version=#` prepended to the HTTP_ACCEPT header and then forward the request on to your Rails app. You can configure most of how it behaves via initialization parameters if you don't like the defaults, for example:
 ```
-config.middleware.use "VersionableApi::ApiVersionInterceptor", /\/API\/version-(?<version>\d+)\/(?<path>.*)/
+config.middleware.use "VersionableApi::ApiVersionInterceptor", {version_regex: /\/API\/version-(?<version>\d+)\/(?<path>.*)/}
 ```
 would cause it to match paths like: `/API/version-10/something` instead.  See documentation in `lib/versionable_api/api_version_interceptor.rb` for details.
 
