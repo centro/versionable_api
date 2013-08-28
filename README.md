@@ -1,6 +1,6 @@
 # VersionableApi
 
-VersionableApi is a small rails plugin that hopefully helps you create versionable apis.
+VersionableApi is a small gem that hopefully helps you create versionable apis (initially in Rails).
 
 # The Problem
 
