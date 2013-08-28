@@ -2,7 +2,7 @@
 # bare resource URIs with the version specified in an Accept header.
 module VersionableApi
   class ApiVersionInterceptor
-    
+
     # Public: Initialize the ApiVersionInterceptor
     #
     # app - Next Rack middleware app in the chain
@@ -36,7 +36,7 @@ module VersionableApi
       @api_prefix = options[:api_prefix]
       @accept_header = options[:accept_header]
     end
-    
+
     def call(env)
       if m = env["PATH_INFO"].match(@version_regex)
         env["PATH_INFO"] = "#{@api_prefix}/#{m[:path]}"
