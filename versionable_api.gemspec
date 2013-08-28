@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email       = ["chris.tenharmsel@centro.net"]
   s.homepage    = "http://www.github.com/centro/versionable_api"
   s.summary     = "Versionable API Rails Engine"
-  s.description = "Simple Rails Engine that provides the framework for sane versionable APIs"
+  s.description = "Simple Gem that provides the framework for sane versionable APIs"
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["test/**/*"]
