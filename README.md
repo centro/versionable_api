@@ -1,6 +1,6 @@
 # VersionableApi
 
-VersionableApi is a small gem that hopefully helps you create versionable apis (initially in Rails).
+VersionableApi is a small gem that helps you create versionable apis (initially in Rails).
 
 # The Problem
 
@@ -41,7 +41,7 @@ would cause it to match paths like: `/API/version-10/something` instead.  See do
 
 # Example
 `PeopleController` with support for 2 versions of API
-```
+```ruby
 class Api::PeopleController < ::ApplicationController
   respond_to :json
   include VersionableApi::ApiVersioning
@@ -50,7 +50,7 @@ class Api::PeopleController < ::ApplicationController
 end
 ```
 The first version:
-```
+```ruby
 module Api::V1::People
   def show_v1
     respond_with People.first
@@ -61,8 +61,8 @@ module Api::V1::People
 end
 ```
 
-And the Second version
-```
+And the second version
+```ruby
 module Api::V2::People
   def show_v2
     respond_with People.where(email: "foo@bar.com")
@@ -94,7 +94,7 @@ the request will get handled by the `Api::V1::People#index_v1` action.  Even tho
 1. Add it to your `Gemfile`:
     
     ```
-    gem 'versionable_api', git: 'git@github.com:/centro/versionable_api.git'
+    gem 'versionable_api'
     ```
 2. Create API controllers that are not versioned: `Api::PeopleController` should be in `app/controllers/api/people_controller.rb`
 3. Include the `VersionableApi::ApiVersioning` module in your controller
