@@ -1,6 +1,5 @@
 module VersionableApi
   module ApiVersioning
-    extend ::ActiveSupport::Concern
 
     # Public: The default version, classes including ApiVersioning should specify
     # this themselves if they don't want the default version to be 1

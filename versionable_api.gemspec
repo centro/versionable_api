@@ -10,13 +10,11 @@ Gem::Specification.new do |s|
   s.authors     = ["Chris TenHarmsel"]
   s.email       = ["chris.tenharmsel@centro.net"]
   s.homepage    = "http://www.github.com/centro/versionable_api"
-  s.summary     = "Versionable API Rails Engine"
-  s.description = "Simple Gem that provides the framework for sane versionable APIs"
+  s.summary     = "Versionable APIs"
+  s.description = "Simple Gem that provides a framework for sane versionable APIs"
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["test/**/*"]
 
-  s.add_dependency "rails", "~> 3.2.13"
-
-  s.add_development_dependency "sqlite3"
+  s.add_development_dependency "rake"
 end
