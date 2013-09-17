@@ -6,13 +6,13 @@ VersionableApi is a small gem that helps you create versionable apis (initially 
 
 The most common way to start trying to version APIs is to create URIs (and routes and controllers) that look somewhat like this:
 ```
-/api/v1/person.json
+/api/v1/people.json
 ```
 and route that to a controller in `app/controllers/api/v1/people_controller.rb`
 
 Then, when you want to make a change to the person API, you create:
 ```
-/api/v2/person.json
+/api/v2/people.json
 ```
 and you create `app/controllers/api/v2/people_controller.rb`.
 
@@ -26,14 +26,14 @@ Instead of putting the version of the API you want to call in the request URI, i
 
 # Maintaining backwards compatibility with clients who are already using the "old" URI style
 
-If you're transitioning an existing API to using VersionableApi and you need to be able to handle 'old' style routes (like `/api/v2/something.json`) VersionableApi provides a simple piece of Rack middleware that can help.
+If you're transitioning an existing API to using VersionableApi and you need to be able to handle 'old' style routes (like `/api/v2/something.json`) `VersionableApi` provides a simple piece of Rack middleware that can help.
 
 The `VersionableApi::ApiVersionInterceptor` can intercept requests to the 'old' api style and massage them to fit your new style.  You can include it by adding the following line inside your `config/application.rb` class:
 ```
 config.middleware.use "VersionableApi::ApiVersionInterceptor"
 ```
 
-By default, it will look for requests to paths that look like `/api/v#/something` and transform them into `/api/something` with `*/*;version=#` prepended to the HTTP_ACCEPT header and then forward the request on to your Rails app. You can configure most of how it behaves via initialization parameters if you don't like the defaults, for example:
+By default, it will look for requests to paths that look like `/api/v#/something` and transform them into `/api/something` with `*/*;version=#` prepended to the `HTTP_ACCEPT` header and then forward the request on to your Rails app. You can configure most of how it behaves via initialization parameters if you don't like the defaults, for example:
 ```
 config.middleware.use "VersionableApi::ApiVersionInterceptor", {version_regex: /\/API\/version-(?<version>\d+)\/(?<path>.*)/}
 ```
