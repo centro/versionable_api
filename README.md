@@ -20,7 +20,7 @@ But do you make `Api::V2::PeopleController` inherit from `Api::V1::PeopleControl
 
 # How VersionableApi tries to solve this problem
 
-`VersionableApi` proposes that you create tiny controllers and then put version-specific behavior in modules that are included in that controller.  `VersionableApi` provides a module that does a tiny bit of magic to determine which "versioned" method gets called based on an HTTP Accept header and will look for lower versions of the methods in case a particular method on a controller hasn't revved yet.
+`VersionableApi` proposes that you create tiny controllers and then put version-specific behavior in modules that are included in that controller.  `VersionableApi` provides a module that does a tiny bit of magic to determine which "versioned" method gets called based on an HTTP Accept header.
 
 Instead of putting the version of the API you want to call in the request URI, it's specified in the Accept Header by adding `;version=X` to one of the acceptable types.  The easiest way is to specify an accept type of `*/*;version=X` (where X is the version you want).
 
@@ -87,7 +87,7 @@ the `Api::V1::People#show_v1` method will handle the request.
 ```
 GET /api/people.json {HTTP_ACCEPT: text/json;version=2}
 ```
-the request will get handled by the `Api::V1::People#index_v1` action.  Even though the request specified that it's using Version 2, since there isn't an explicit Version 2 of the `index` action, control will fall back to the Version 1 version.
+a 404 will be returned because there is no version 2 of the `index` action.
 
 
 # How to use it

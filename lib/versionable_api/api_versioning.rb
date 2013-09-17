@@ -28,11 +28,8 @@ module VersionableApi
 
       unless version.nil?
         version = version.to_i
-        method = nil
-        version.downto(1) do |v|
-          name = "#{action}_v#{v}"
-          method ||= self.respond_to?(name) ? name : nil
-        end
+        name = "#{action}_v#{version}"
+        method = self.respond_to?(name) ? name : nil
       end
 
       method ||= self.respond_to?("action_missing") ? "_handle_action_missing" : nil

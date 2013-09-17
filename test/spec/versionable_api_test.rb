@@ -66,11 +66,11 @@ describe VersionableApi::ApiVersioning do
       assert_equal "show_v1", @test_me.method_for_action("show")
     end
 
-    it "should return the highest available version if the version specified is higher than the available versions" do
+    it "should return nil if the version specified is higher than the available versions" do
       @test_me.request.headers["HTTP_ACCEPT"] = "*/*;version=10"
-      assert_equal "show_v2", @test_me.method_for_action("show")
+      assert_nil @test_me.method_for_action("show")
       @test_me.request.headers["HTTP_ACCEPT"] = "*/*;version=2"
-      assert_equal "index_v1", @test_me.method_for_action("index")
+      assert_nil @test_me.method_for_action("index")
     end
 
     it "should return _handle_action_missing if #action_missing is defined and unkown action is called for" do
